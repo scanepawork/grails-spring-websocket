@@ -92,6 +92,10 @@ publishing {
     }
 }
 
-signing {
-    sign(publishing.publications.maven)
+if(!project.hasProperty('skipSigning')) {
+    signing {
+        sign(publishing.publications.maven)
+    }
+} else {
+    println "Skipping signing as 'skipSigning' property is set."
 }
